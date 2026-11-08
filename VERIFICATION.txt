@@ -1,0 +1,26 @@
+cargo fmt
+exit=0
+
+
+cargo clippy -q -j 2 -- -D warnings
+exit=0
+
+
+cargo test --locked -q -j 2 -- --include-ignored
+exit=0
+
+running 12 tests
+............
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.61s
+
+
+
+cargo check --locked -q -j 2 --target x86_64-pc-windows-gnu
+exit=0
+
+
+cargo check --locked -q -j 2 --target aarch64-apple-darwin
+exit=0
+
+
+GUI smoke: Linux Xvfb, 8 seconds, no stderr/panic, terminated by timeout (exit 124). Native Windows/macOS execution and physical USB/NAS not tested.
